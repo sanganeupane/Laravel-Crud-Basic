@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/home',"ApplicationController@home")->name('home');
-Route::get('/about',"ApplicationController@about")->name('about');
-Route::get('/contact',"ApplicationController@contact")->name('contact');
-Route::post('/contact',"ApplicationController@contactAction")->name('contactAction');
+Route::get('/','crudcontroller@index')->name('index') ;
+Route::post('/','crudcontroller@insert')->name('insert') ;
+Route::get('delete/{criteria?}', 'crudcontroller@delete')->name('delete');
+Route::get('edit/{criteria?}', 'crudcontroller@edit')->name('edit');
+Route::any('edit-Action', 'crudcontroller@editAction')->name('edit-Action');
+
